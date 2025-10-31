@@ -1,35 +1,43 @@
-🌾 Agriculture & Climate Insights — Prototype
+## Agriculture & Climate Insights — Prototype
 
 A simple, functional prototype that connects agricultural crop production data with climatic rainfall patterns for Indian states & districts using publicly available datasets from data.gov.in.
 
 This project was created as part of the Bharat Digital Challenge — Project Samarth.
 
-✅ Features
+### **Features**
 
-✔ State → District selection
-✔ Crop production data viewer
-✔ Rainfall pattern viewer
-✔ Top N crops in a selected state
-✔ Combined integrated dataset (crop + rainfall)
-✔ Data sourced from live API + IMD rainfall dataset
+🔹State → District selection
 
-✅ Dataset Sources
-1. Crop Production Dataset (Live API, data.gov.in)
+🔹 Crop production data viewer
 
-Resource ID: stored securely via .env
+🔹 Rainfall pattern viewer
 
-API Format: CSV
+🔹 Top N crops in a selected state
 
-Fields used: State, District, Crop, Year, Area, Production
+🔹 Combined integrated dataset (crop + rainfall)
 
-2. Rainfall Normals (IMD)
+🔹 Data sourced from live API + IMD rainfall dataset
 
-File: data/rainfall.xls
+________________________
+### **Dataset Sources**
+#### 1. Crop Production Dataset (Live API, data.gov.in)
 
-Columns include: JAN–DEC, ANNUAL, MAM, JJAS, OND
+`Resource ID` : stored securely via .env
 
-✅ Project Structure
-project/
+`API Format` : CSV
+
+`Fields used` : State, District, Crop, Year, Area, Production
+
+
+#### 2. Rainfall Normals (IMD)
+
+`File` : data/rainfall.xls
+
+`Columns include` : JAN–DEC, ANNUAL, MAM, JJAS, OND
+
+_______________________
+### **Project Structure**
+```project/
 │
 ├── app.py
 ├── fetch_data.py
@@ -40,56 +48,63 @@ project/
 ├── .gitignore
 └── data/
      └── rainfall.xls
-
-✅ Installation & Setup
+```
+________________________________________________________________________________________
+### **Installation & Setup**
 1. Create virtual environment
+```
 python -m venv .venv
-
+```
 2. Activate it
 
 Windows:
-
-.venv\Scripts\activate
-
+```
+.venv\Scripts\activate 
+```
 3. Install dependencies
+```
 pip install -r requirements.txt
-
+```
 4. Add .env file
 
 Create .env:
-
+```
 CROP_API_KEY=YOUR_API_KEY_HERE
 CROP_RESOURCE_ID=YOUR_RESOURCE_ID_HERE
+```
 
-✅ Running the App
+Running the App ✅
+```
 streamlit run app.py
-
+```
 
 Then open:
-👉 http://localhost:8501/
+http://localhost:8501/
 
-✅ How It Works
+_________________
+### **How It Works**
 
-Fetches crop data dynamically from data.gov.in using the API
+1. Fetches crop data dynamically from data.gov.in using the API
+   
+2. Reads rainfall data from IMD XLS file
+               
+3. Cleans & normalizes state/district names
+               
+4. Merges climate + agriculture data
+               
+5. Lets user explore:
+   
+- District rainfall data
 
-Reads rainfall data from IMD XLS file
+- Crop production trends
 
-Cleans & normalizes state/district names
+- Top N state crops
 
-Merges climate + agriculture data
+_____
+### **Limitations**
 
-Lets user explore:
+- IMD rainfall data is historical normals (1951–2000)
 
-District rainfall data
+- Crop dataset production values vary by availability on data.gov.in
 
-Crop production trends
-
-Top N state crops
-
-✅ Limitations
-
-IMD rainfall data is historical normals (1951–2000)
-
-Crop dataset production values vary by availability on data.gov.in
-
-Prototype focuses on merging datasets, not NLP Q&A
+- Prototype focuses on merging datasets, not NLP Q&A
