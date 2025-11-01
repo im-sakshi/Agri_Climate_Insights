@@ -1,23 +1,30 @@
 import pandas as pd
 
 def merge_data(crop_df, rain_df):
-    crop_df = crop_df.copy()
-    rain_df = rain_df.copy()
+    c = crop_df.copy()
+    r = rain_df.copy()
 
-    crop_df.columns = crop_df.columns.str.lower()
-    rain_df.columns = rain_df.columns.str.lower()
+    c.columns = c.columns.str.lower()
+    r.columns = r.columns.str.lower()
 
-    crop_df['district'] = crop_df['district_name'].str.lower().str.strip()
-    crop_df['state'] = crop_df['state_name'].str.lower().str.strip()
+    c['district'] = c['district_name'].str.lower().str.strip()
+    c['state'] = c['state_name'].str.lower().str.strip()
 
-    rain_df['district'] = rain_df['district'].str.lower().str.strip()
-    rain_df['state'] = rain_df['state/ut'].str.lower().str.strip()
+    r['district'] = r['district'].str.lower().str.strip()
+    r['state'] = r['state/ut'].str.lower().str.strip()
 
-    merged = pd.merge(
-        crop_df,
-        rain_df,
-        on=['state', 'district'],
-        how='left'
+    rain_cols = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"]
+    order = ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"]
+
+    rainfall_long = r.melt(
+        id_vars=["state","district"],
+        value_vars=rain_cols,
+        var_name="month",
+        value_name="rainfall"
     )
+
+    rainfall_long["month"] = pd.Categorical(rainfall_long["month"], categories=order, ordered=True)
+
+    merged = pd.merge(c, r, on=["state","district"], how="left")
 
     return merged

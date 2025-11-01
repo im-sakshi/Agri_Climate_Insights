@@ -1,6 +1,7 @@
 pandas
 numpy
 streamlit
-xlrd == 2.0.1
+xlrd
 requests
-dotenv
+altair
+python-dotenv
