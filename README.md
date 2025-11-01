@@ -12,7 +12,13 @@ This project was created as part of the Bharat Digital Challenge — Project Sam
 
 🔹 Rainfall pattern viewer
 
+🔹 Monthly rainfall trend chart
+
 🔹 Top N crops in a selected state
+
+🔹 State-level correlation between rainfall & crop production
+
+🔹 Secure API handling via .env
 
 🔹 Combined integrated dataset (crop + rainfall)
 
@@ -88,17 +94,21 @@ _________________
    
 2. Reads rainfall data from IMD XLS file
                
-3. Cleans & normalizes state/district names
+3. Cleans & normalizes names
                
-4. Merges climate + agriculture data
+4. Merges climate & agriculture data
                
 5. Lets user explore:
+
+- Crop production
    
 - District rainfall data
 
-- Crop production trends
+- Monthly rainfall trends
 
 - Top N state crops
+  
+- State-level climate - crop correlations
 
 _____
 ### **Limitations**
@@ -107,4 +117,4 @@ _____
 
 - Crop dataset production values vary by availability on data.gov.in
 
-- Prototype focuses on merging datasets, not NLP Q&A
+- Prototype focuses on merging datasets, not NLP Q&A due to time constraints
